@@ -42,6 +42,7 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/users/{id}", handler.FetchUsers).Methods("GET")
 	r.HandleFunc("/users", handler.CreateUsers).Methods("POST")
+	r.HandleFunc("/users/{id}/delete", handler.DeleteUsers).Methods("DELETE")
 	http.Handle("/", r)
 
 	err = http.ListenAndServe(":"+strconv.Itoa(port), nil)

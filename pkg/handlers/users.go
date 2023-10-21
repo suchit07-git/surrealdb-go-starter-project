@@ -75,3 +75,9 @@ func (h handler) FetchUsers(w http.ResponseWriter, r *http.Request) {
 	w.Write(jsonObject)
 	return
 }
+
+func (h handler) DeleteUsers(w http.ResponseWriter, r *http.Request) {
+	h.CreateUsers(w, r)
+	vars := mux.Vars(r)
+	h.db.Delete("users:" + vars["id"])
+}
